@@ -48,7 +48,7 @@ Integrates:
 
 - a **reciprocity-theorem-based voltage-to-matrix mapping (V2M)**,
 - **asymmetric cross-domain attention** (image features query voltage tokens),
-- **FiLM conditioning** at every decoder scale,
+- **Sensitivity-aware spatial attention** provides local nonlinear compensation for the inverse problem sensitivity,
 
 for nonlinear multi-scale fusion of the two heterogeneous modalities.
 
