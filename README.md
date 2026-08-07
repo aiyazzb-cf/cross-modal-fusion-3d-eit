@@ -197,8 +197,6 @@ See the docstrings in `model.py` for details.
 4. Train VIFI-Net on `(Y, y, X_init)` triplets with the supervision of the
    ground-truth conductivity image.
 
-Training and data-loading scripts will be released in a later update.
-
 ---
 
 ## Citation
