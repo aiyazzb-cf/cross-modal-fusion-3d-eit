@@ -58,8 +58,7 @@ for nonlinear multi-scale fusion of the two heterogeneous modalities.
 
 - **Dual-M SMP** improves average MS by **> 85%** across six numerical models.
 - **UREIT** improves reconstruction uniformity relative to Tikhonov regularization at **93%** of the spatial locations.
-- **VIFI-Net @ 40 dB SNR**: best MAE / PSNR / SSIM among compared methods; **MAE reduced by 23.0%** versus the second-best method.
-- **VIFI-Net @ 20 dB SNR**: PSNR declines by only **3.55 dB**; GMSD improves by **17.7%**.
+- **VIFI-Net**: best MAE / PSNR / SSIM / GMSD among compared methods.
 
 ---
 
