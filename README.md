@@ -219,7 +219,7 @@ If you find this work useful in your research, please consider citing:
 ## License
 
 This project is licensed under the **MIT License** — see the
-[LICENSE](LICENSE) file (please add the LICENSE file before publishing).
+[LICENSE](LICENSE) file.
 
 ---
 
