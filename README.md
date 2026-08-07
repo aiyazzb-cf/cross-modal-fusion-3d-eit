@@ -24,7 +24,7 @@ This framework exploits the **spectral complementarity** between the two modalit
 
 | Module | Full name | Role |
 |---|---|---|
-| **Dual-M SMP** | Dual-**M**aximum **M**easurement-**S**ensitivity **S**timulation–Measurement **P**attern | Front-end channel selection |
+| **Dual-M SMP** | **D**ual-**M**aximum **S**timulation–Measurement **P**attern | Front-end channel selection |
 | **UREIT** | **U**niform **R**econstruction for **E**IT | Image-domain anchor generation |
 | **VIFI-Net** | **V**oltage–**I**mage **F**usion **I**maging **N**etwork | Cross-modal nonlinear fusion |
 
