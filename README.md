@@ -230,7 +230,7 @@ See the docstrings in `model.py` for details.
 ## Reproducing the Paper
 
 1. Generate / load an EIDORS forward model (see `FEMs/`).
-2. Build the Dual-M SMP → compute its Jacobian.
+2. Build the Dual-M SMP → compute its Jacobian → `y`.
 3. Build the UREIT reconstruction matrix → obtain the initial image `X_init`.
 4. Map the Dual-M SMP responses onto the electrode-pair matrix with V2M → `Y`.
 5. Train VIFI-Net on `(Y, y, X_init)` triplets with the supervision of the
