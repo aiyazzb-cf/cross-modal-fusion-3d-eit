@@ -76,7 +76,9 @@ opencode/
 │   ├── smc_list_to_stimulation.m    #   SMC list → EIDORS stimulation structs
 │   ├── ureit_reconstruction_matrix.m #  UREIT reconstruction matrix (NF-matched λ)
 │   ├── elem_measure.m               #   element area (2D) / volume (3D)
-│   ├── main.m                       #   end-to-end demo (Dual-M SMP → UREIT)
+│   ├── voltage_to_matrix.m          #   V2M: responses → electrode-pair matrix
+│   ├── interpolate_by_electrode_layout.m #  layout-based completion of Y
+│   ├── main.m                       #   end-to-end demo (SMP → UREIT → V2M)
 │   └── FEMs/                        #   EIDORS forward models (cylinder/head/thorax)
 └── python/
     └── VIFI-Net/
@@ -117,7 +119,30 @@ jacobian = calc_jacobian(img);
     'verbose', true, 'randomSeed', 42);     % reproducible noise samples
 ```
 
-`main.m` runs both steps end-to-end.
+`main.m` runs the full pipeline end-to-end.
+
+### MATLAB — V2M (voltage-to-matrix mapping)
+
+Map the Dual-M SMP voltage responses onto the dense electrode-pair matrix
+that VIFI-Net consumes:
+
+```matlab
+% Sensitivity matrix on the Dual-M SMP channel set
+img.fwd_model.stimulation = smc_list_to_stimulation(smp, 1e-2, numel(fmdl.electrode));
+jacobian = calc_jacobian(img);
+y = jacobian * perturbation;               % simulated voltage change (n x 1)
+
+% Electrode centroids
+electrodes = zeros(numel(fmdl.electrode), 3);
+for i = 1:numel(fmdl.electrode)
+    electrodes(i, :) = mean(fmdl.nodes(fmdl.electrode(i).nodes, :), 1);
+end
+
+Y = voltage_to_matrix(smp, electrodes, y); % (P x P x T), single precision
+```
+
+Entries are filled by reciprocity symmetry and completed by
+`interpolate_by_electrode_layout`.
 
 ### Python — VIFI-Net
 
@@ -179,6 +204,19 @@ NF-matched regularization parameter.
 > **Large models**: each NF evaluation multiplies `RM` by 500 noise vectors;
 > for very large meshes use `'noiseSamples', 100` for fast experiments.
 
+### `voltage_to_matrix(smp, electrodeCoords, y)`
+
+| Argument | Description |
+|---|---|
+| `smp` | (n x 4) Dual-M SMP channel list `[s- s+ m- m+]` |
+| `electrodeCoords` | (N x 2/3) electrode coordinates |
+| `y` | (n x T) voltage responses |
+
+Output: `Y` — (P x P x T) dense `single` matrix over the P unique
+electrode pairs, with reciprocity symmetry; missing entries are completed by
+`interpolate_by_electrode_layout` (position / direction / length similarity
+kernels with automatic `sigma_d`, `sigma_L`).
+
 ### `VIFINet`
 
 ```python
@@ -194,7 +232,8 @@ See the docstrings in `model.py` for details.
 1. Generate / load an EIDORS forward model (see `FEMs/`).
 2. Build the Dual-M SMP → compute its Jacobian.
 3. Build the UREIT reconstruction matrix → obtain the initial image `X_init`.
-4. Train VIFI-Net on `(Y, y, X_init)` triplets with the supervision of the
+4. Map the Dual-M SMP responses onto the electrode-pair matrix with V2M → `Y`.
+5. Train VIFI-Net on `(Y, y, X_init)` triplets with the supervision of the
    ground-truth conductivity image.
 
 ---
