@@ -2,7 +2,7 @@
 
 # Cross-Modal Fusion 3D EIT Imaging Framework
 
-**A Cross-Modal Fusion 3D EIT Imaging Framework Based on Optimal Information Supply and Physical Priors**
+**Cross-Modal Fusion 3D Electrical Impedance Tomography Framework for Spectral Complementarity Imaging Based on Optimal Information Supply and Physical Priors**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)]()
@@ -24,7 +24,7 @@ This framework exploits the **spectral complementarity** between the two modalit
 
 | Module | Full name | Role |
 |---|---|---|
-| **Dual-M SMP** | **D**ual-**M**aximum **S**timulation–Measurement **P**attern | Front-end channel selection |
+| **Dual-M SMP** | **D**ual-**M**aximum **S**timulation–**M**easurement **P**attern | Front-end channel selection |
 | **UREIT** | **U**niform **R**econstruction for **E**IT | Image-domain anchor generation |
 | **VIFI-Net** | **V**oltage–**I**mage **F**usion **I**maging **N**etwork | Cross-modal nonlinear fusion |
 
@@ -244,10 +244,8 @@ If you find this work useful in your research, please consider citing:
 
 ```bibtex
 @article{DUALM_SMP_UREIT_VIFINET,
-  title   = {A Cross-Modal Fusion 3D EIT Imaging Framework Based on
-             Optimal Information Supply and Physical Priors},
+  title   = {Cross-Modal Fusion 3D Electrical Impedance Tomography Framework for Spectral Complementarity Imaging Based on Optimal Information Supply and Physical Priors},
   author  = {Zhao, Zhibo and Feng, Fu and Yang, Lin},
-  journal = {Information Fusion},
   year    = {2026},
   note    = {under review}
 }
