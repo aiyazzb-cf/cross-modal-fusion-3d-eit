@@ -26,7 +26,7 @@ This framework exploits the **spectral complementarity** between the two modalit
 |---|---|---|
 | **Dual-M SMP** | **D**ual-**M**aximum **S**timulation–**M**easurement **P**attern | Front-end channel selection |
 | **UREIT** | **U**niform **R**econstruction for **EIT** | Image-domain anchor generation |
-| **VIFI-Net** | **V**oltage–**I**mage **F**usion **I**maging **N**etwork | Cross-modal nonlinear fusion |
+| **VIFI-Net** | **V**oltage–**I**mage **F**usion **I**maging **Net**work | Cross-modal nonlinear fusion |
 
 ### 1. Dual-M SMP — optimal information supply
 Selects the stimulation–measurement channels (SMCs) with **maximal total Measurement Sensitivity (MS) under a strict independence constraint**:
