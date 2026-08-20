@@ -1,8 +1,8 @@
 <div align="center">
 
-# Cross-Modal Fusion 3D EIT Imaging Framework
+# Cross-Modal Fusion 3D EIT Framework
 
-**Cross-Modal Fusion 3D Electrical Impedance Tomography Framework for Spectral Complementarity Imaging Based on Optimal Information Supply and Physical Priors**
+**Cross-Modal Fusion 3D Electrical Impedance Tomography Framework for Spectral-Complementarity Reconstruction Based on Optimal Information Supply and Physical Priors**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)]()
